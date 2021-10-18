@@ -7,7 +7,7 @@ const CounterAction = (props) => {
         className={`${classes.btn} ${classes["btn-increase"]}`}
         onClick={() => props.onChangeCounter((prevCounter) => ++prevCounter)}
       >
-        Increase
+        INCREASE
       </button>
       <button
         className={`${classes.btn} ${classes["btn-decrease"]}`}
@@ -18,7 +18,13 @@ const CounterAction = (props) => {
           })
         }
       >
-        Decrease
+        DECREASE
+      </button>
+      <button
+        className={`${classes.btn} ${classes["btn-reset"]}`}
+        onClick={() => props.onChangeCounter(0)}
+      >
+        RESET
       </button>
     </>
   );
