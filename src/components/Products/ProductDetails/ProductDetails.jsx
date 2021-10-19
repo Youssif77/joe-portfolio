@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Spinner, Box, Image, Badge } from "@chakra-ui/react";
+import { Box, Image, Badge } from "@chakra-ui/react";
+import Spinner from "../../UI/Spinner";
 
 function ProductDetails(props) {
   const [product, setproduct] = useState(null);
@@ -7,18 +8,12 @@ function ProductDetails(props) {
     fetch(`https://fakestoreapi.com/products/${props.match.params.id}`)
       .then((res) => res.json())
       .then((json) => setproduct(json));
-  }, []);
+  }, [props.match.params.id]);
 
   return (
     <>
       {!product ? (
-        <Spinner
-          thickness="4px"
-          speed="0.65s"
-          emptyColor="gray.200"
-          color="blue.500"
-          size="xl"
-        />
+        <Spinner />
       ) : (
         <Box
           maxW="sm"

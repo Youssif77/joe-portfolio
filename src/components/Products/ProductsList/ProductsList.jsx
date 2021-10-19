@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ProductItem from "../ProductItem/ProductItem";
-import { Spinner } from "@chakra-ui/react";
+import Spinner from "../../UI/Spinner";
 
 function ProductsList() {
   const [products, setproducts] = useState([]);
@@ -13,13 +13,7 @@ function ProductsList() {
   return (
     <>
       {!products.length ? (
-        <Spinner
-          thickness="4px"
-          speed="0.65s"
-          emptyColor="gray.200"
-          color="blue.500"
-          size="xl"
-        />
+        <Spinner />
       ) : (
         products.map((product) => (
           <ProductItem key={product.id} product={product} />
