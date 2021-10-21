@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar";
 import CounterContainer from "./components/CounterContainer/CounterContainer";
 import Products from "./components/Products/Products";
 import ProductDetails from "./components/Products/ProductDetails/ProductDetails";
+import Todos from "./components/Todos/Todos";
 
 import "./App.css";
 
@@ -18,6 +19,7 @@ function App() {
         <Route path="/counter" component={CounterContainer} />
         <Route path="/products" component={Products} />
         <Route path="/product/:id" component={ProductDetails} />
+        <Route path="/todos" component={Todos} />
       </Switch>
     </Router>
   );

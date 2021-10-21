@@ -39,6 +39,7 @@ const Navbar = (props) => {
         <MenuItems to="/">Home</MenuItems>
         <MenuItems to="/counter">Counter</MenuItems>
         <MenuItems to="/products">Products</MenuItems>
+        <MenuItems to="/todos">Todos</MenuItems>
       </Box>
     </Flex>
   );
