@@ -6,16 +6,18 @@ import reducer from "./redux/reducers";
 
 import "./index.css";
 import App from "./App";
-import { ChakraProvider } from "@chakra-ui/react";
+import { ChakraProvider, ColorModeScript } from "@chakra-ui/react";
 
 const store = createStore(reducer);
 
 ReactDOM.render(
   <React.StrictMode>
     <ChakraProvider>
+      {/* <ColorModeScript initialColorMode="system"> */}
       <Provider store={store}>
         <App />
       </Provider>
+      {/* </ColorModeScript> */}
     </ChakraProvider>
   </React.StrictMode>,
   document.getElementById("root")

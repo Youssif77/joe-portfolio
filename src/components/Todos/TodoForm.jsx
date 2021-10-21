@@ -1,37 +1,46 @@
-import { addTodo } from "../../redux/actions/todos";
-import { useDispatch } from "react-redux";
 import { useRef } from "react";
+import { nanoid } from "nanoid";
+import { useDispatch } from "react-redux";
+import { addTodo } from "../../redux/actions/todos";
 
-import { Input, Button, ButtonGroup, Textarea } from "@chakra-ui/react";
+import { Input, Button, HStack, useToast } from "@chakra-ui/react";
 
 function TodoForm() {
   const dispatch = useDispatch();
 
   const titleRef = useRef();
-  const descriptionRef = useRef();
+
+  const toast = useToast();
 
   const addTodoHandler = (e) => {
     e.preventDefault();
+    const title = titleRef.current.value;
+    if (!title) {
+      toast({
+        title: "No conent!",
+        status: "error",
+        duration: 2000,
+        isClosable: true,
+      });
+      return;
+    }
     dispatch(
       addTodo({
-        id: Date.now(),
-        title: titleRef.current.value,
-        description: descriptionRef.current.value || null,
+        id: nanoid(),
+        title,
       })
     );
-    titleRef.current.value = descriptionRef.current.value = "";
+    titleRef.current.value = "";
   };
 
   return (
-    <form id="email" onSubmit={addTodoHandler}>
-      <Input ref={titleRef} variant="flushed" placeholder="Todo Title" />
-      <Textarea ref={descriptionRef} placeholder="Descripe Todo" />
-      <ButtonGroup variant="outline" spacing="6">
-        <Button type="submit" colorScheme="blue">
+    <form onSubmit={addTodoHandler}>
+      <HStack mt="4">
+        <Input ref={titleRef} variant="filled" placeholder="Add Todo Title" />
+        <Button type="submit" colorScheme="teal" px="8">
           Save
         </Button>
-        <Button>Cancel</Button>
-      </ButtonGroup>
+      </HStack>
     </form>
   );
 }
