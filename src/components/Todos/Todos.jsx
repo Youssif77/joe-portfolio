@@ -1,19 +1,12 @@
-import { useSelector, useDispatch } from "react-redux";
-import { ADD_TODO, REMOVE_TODO } from "../../redux/actions/todos";
-import TodosList from "./TodosList/TodosList";
+import TodoForm from "./TodoForm";
+import TodosList from "./TodosList";
 
 function Todos() {
-  const dispatch = useDispatch();
-  const todos = useSelector((state) => state.todos.counter);
-  const addTodoHandler = () => {
-    dispatch({ type: ADD_TODO, todo: 2 });
-  };
-
   return (
-    <>
+    <div>
       <TodosList />
-      <div onClick={addTodoHandler}>{todos}</div>
-    </>
+      <TodoForm />
+    </div>
   );
 }
 

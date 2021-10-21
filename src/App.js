@@ -1,8 +1,8 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import Navbar from "./components/Navbar";
-import CounterContainer from "./components/CounterContainer/CounterContainer";
 import Products from "./components/Products/Products";
+import Counter from "./components/Counter/Counter";
 import ProductDetails from "./components/Products/ProductDetails/ProductDetails";
 import Todos from "./components/Todos/Todos";
 
@@ -16,7 +16,7 @@ function App() {
         <Route exact path="/">
           <div>HOME</div>
         </Route>
-        <Route path="/counter" component={CounterContainer} />
+        <Route path="/counter" component={Counter} />
         <Route path="/products" component={Products} />
         <Route path="/product/:id" component={ProductDetails} />
         <Route path="/todos" component={Todos} />
