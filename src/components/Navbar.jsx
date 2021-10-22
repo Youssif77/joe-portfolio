@@ -1,5 +1,7 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Box, Heading, Flex } from "@chakra-ui/react";
+import Login from "./Login/Login";
 
 const MenuItems = (props) => (
   <Link to={props.to}>
@@ -10,6 +12,8 @@ const MenuItems = (props) => (
 );
 
 const Navbar = (props) => {
+  const [loginIsShown, setLoginIsShown] = useState(false);
+
   return (
     <Flex
       as="nav"
@@ -20,6 +24,7 @@ const Navbar = (props) => {
       borderBottom="1px solid black"
       {...props}
     >
+      {loginIsShown && <Login onHideCart={setLoginIsShown.bind(null, false)} />}
       <Link to="/">
         <Flex align="center" mr={5}>
           <Heading as="h1" size="lg" letterSpacing="-.1rem">
@@ -39,7 +44,15 @@ const Navbar = (props) => {
         <MenuItems to="/products">Products</MenuItems>
         <MenuItems to="/todos">Todos</MenuItems>
         <MenuItems to="/register">Register</MenuItems>
-        <MenuItems to="/login">Login</MenuItems>
+        <Box
+          onClick={setLoginIsShown.bind(null, true)}
+          mt={{ base: 4, md: 0 }}
+          mr={6}
+          cursor="pointer"
+          display="block"
+        >
+          Login
+        </Box>
       </Box>
     </Flex>
   );
